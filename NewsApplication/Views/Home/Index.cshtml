@@ -1,0 +1,11 @@
+﻿@model List<NewsApplication.Models.Articles>
+
+
+<div>
+      @foreach(var item in Model){
+          <h1>@item.Source?.Name</h1>
+          <h1>@item.Url</h1>
+          <h1>@item.Author</h1>
+          <img src=@item.UrlToImage/>
+      }
+</div>
