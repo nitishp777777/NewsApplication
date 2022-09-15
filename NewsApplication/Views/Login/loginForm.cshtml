@@ -1,0 +1,119 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NewsApplication</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NewsApplication.styles.css" asp-append-v+ersion="true" />
+</head>
+<style>
+    .h-custom{
+        height:calc(100% - 73px);
+    }
+    .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+@@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+</style>
+<body style="margin-bottom:0!important;">
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center">
+                <p class="col-sm-12 m-1 animate-charcter" style="text-align:center;margin-top:0.5%;font-size:xx-large;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+                    Welcome to News Portal!
+                </p>
+
+            </div>
+            <div class="row d-flex justify-content-center align-items-center h-75">
+            
+
+            <div class="col-md-8 col-lg-6 col-xl-4 align-self-center" style="padding:30px;">
+                    @using (Html.BeginForm("StartLoginProcess", "Login", FormMethod.Post, new { @class = "loginform" }))
+                    {
+                <form>
+                    <div class="form-group row">
+                        <label for="inputusername3" class="col-sm-2 col-form-label">Username </label>
+                        <div class="col-md-12">                                 
+                            @Html.TextBoxFor(m => m.Username,new { @type="text",@class = "form-control",@id = "inputusername2",@placeholder = "Please provide the Username"})
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Email Address </label>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Emailaddress,new { @type="email",@class = "form-control",@id = "inputEmail2",@placeholder = "Please provide the Email"})
+
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                            <label for="inputpassword3" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-md-12">                                  
+                                    @Html.TextBoxFor(m => m.Password,new { @type="password",@class = "form-control",@id = "inputPassword3",@placeholder = "Please Enter the Password"})
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                                    <div class="row align-items-center justify-content-center">
+                                        <button type="submit" class="btn btn-primary btn-group-sm">Login Here!</button>
+                                    </div>
+                            
+                        </div>
+                    </div>
+                    <br>
+
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="row align-items-center justify-content-center">
+                                        <p>Don't have any account?<a href=@Url.Action("Registration","Login")>Register Here</a></p>
+                                    </div>
+
+                                </div>
+                            </div>
+                   
+                </form>
+            }
+        
+        
+            </div>
+            
+            </div>
+        </div>
+    </section>
+</body>
+</html>

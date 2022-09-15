@@ -1,11 +1,132 @@
 ﻿@model List<NewsApplication.Models.Articles>
 
+<style>
+
+
+        *{
+        box-sizing: border-box;
+         }
+
+        body {
+        font-family: 'Raleway', sans-serif;
+        line-height: 1.5;
+        font-size: 1rem;
+        color: #444;
+        margin: 0;
+        background-color: #efe9e9;
+        }
+
+        i{
+         color: #888;
+        }
+
+        .container {
+        width: 96%;
+        margin: 1rem auto;
+        }
+
+        .card {
+  
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+      /*  .card div:first-child {
+        flex-basis: 35%;
+        }*/
+
+        .card div:last-child {
+        flex-basis: 25%;
+        padding: 0 0.5rem 0.25rem;
+        }
+
+        .card img {
+        display: block;
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        }
+
+        .card p {
+        margin-top: 0.5rem;
+        margin-bottom: 0.35rem;
+        }
+
+        .shadow {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .border {
+        border: 1px solid #ddd;
+        }
+
+        .curve {
+         border-radius: 0.35rem;
+        }
+
+        
+
+</style>
 
 <div>
-      @foreach(var item in Model){
-          <h1>@item.Source?.Name</h1>
-          <h1>@item.Url</h1>
-          <h1>@item.Author</h1>
-          <img src=@item.UrlToImage/>
-      }
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <input type="submit" placeholder="Please enter the keyword to search"/>
+                </div>
+            </div>
+            @foreach (var item in Model)
+            {
+
+            <article class="card shadow"> 
+                @*<div>
+                    <img src= @item.UrlToImage/>
+                </div>*@
+                    <div class="row">
+                            <div class="col-8"> 
+                                <div>
+                                        <p hidden="hidden">@item.Source?.Id</p>
+                                        <div class="row">
+                                            
+                                            <div class="col-8">
+                                                <p style="font-weight:900;text-align:center;">@item.Source?.Name</p>
+                                            </div>
+                                            <div class="col-4">
+                                                <p>
+                                                @item.PublishedAt
+                                                </p>
+                                            </div>
+                                        </div>
+                                        @*<a href=@item.Url>@item.Description </a>*@
+@*                                      <p>@item.Description</p>
+                                        
+
+*@                                      
+                                        <p>@item.Title</p>
+                                        <p>
+                                        @String.Concat(@item.Content?.Substring(0,180),"....")<a href=@item.Url>View more</a>
+                                        </p>
+                                <p><spn>This article is written by </spn>@String.Concat("- ",@item.Author)</p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <img href="@item.Url" src=@item.UrlToImage style="padding:10%;width:100%;height:100%"/>
+                            </div>
+                            
+                    </div>
+            </article>
+            }
+            
+        </div>
+        <div style="z-index:999;">
+            <button>Get Headlines</button>
+        </div>
+    </main>
+          
+            
 </div>

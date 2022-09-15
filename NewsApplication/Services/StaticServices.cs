@@ -138,11 +138,11 @@ namespace NewsApplication.Services
             if (!string.IsNullOrWhiteSpace(json))
             {
                 NewAPIResponse apiResponse = JsonConvert.DeserializeObject<NewAPIResponse>(json);
-                articlesResult.Statuses = apiResponse.Status;
+                articlesResult.Statuses = apiResponse?.Status;
                 if(articlesResult.Statuses == API.Constants.Statuses.Ok)
                 {
-                    articlesResult.TotalResults = apiResponse.TotalResults;
-                    articlesResult.Articles = apiResponse.Articles;
+                    articlesResult.TotalResults = apiResponse?.TotalResults;
+                    articlesResult.Articles = apiResponse?.Articles;
 
                 }
                 else

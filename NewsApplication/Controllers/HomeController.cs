@@ -27,20 +27,25 @@ namespace NewsApplication.Controllers
             var response = newsAPIClient.GetAllHeadlinesAsync
                 (new GetEverthingRequest
                 {
-                    Q = "Apple"
+                    Q = "Apple",
+                     
                 }).Result;
 
            
 
            if(response.Statuses == Statuses.Ok)
             {
-                //ViewBag["ArticleResponse"] = response.Articles;
                 return View(response.Articles);
             }
-           
-            return View();
+           //if(response.Statuses == Statuses.error)  
+                return View();
 
         }
+
+        //public IActionResult ArticleView()
+        //{
+
+        //}
        
     }
 }
